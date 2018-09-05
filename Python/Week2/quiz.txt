@@ -1,0 +1,62 @@
+(1) #Write a function intreverse(n) that takes as input a positive integer n and returns the integer obtained by reversing the digits in n.
+
+def intreverse(l):
+	r=0
+	while l>0:
+		r=r*10+l%10
+		l=int(l/10)
+	return(r)
+
+
+(2) Write a function matched(s) that takes as input a string s and checks if the brackets "(" and ")" in s are matched: that is, every "(" has a matching ")" after it and every ")" has a matching "(" before it. Your function should ignore all other symbols that appear in s. Your function should return True if s has matched brackets and False if it does not.
+
+>>> def matched(s):
+	n=len(s)
+	S=[]
+	for i in range(n):
+		if s[i]=='(':
+			S.append(s[i])
+		elif s[i]==')':
+			if(len(S)==0) or (S[-1]+s[i]!='()'):
+				return False
+			else:
+				S.pop()
+	return len(S)==0
+
+>>> matched("zb%78")
+True
+>>> matched("(7)(a")
+False
+>>> matched("a)*(?")
+False
+>>> matched("((jkl)78(A)&l(8(dd(FJI:),):)?)")
+True
+>>> 
+
+
+(3)#Write a function sumprimes(l) that takes as input a list of integers l and retuns the sum of all the prime numbers in l.
+
+>>> def checkprime(num):
+	if num > 1:
+		for i in range(2,num):
+			if (num % i) == 0:
+				return(False)
+		return(True)
+	else:
+		return(False)
+
+	
+>>> def sumprimes(l):
+    i=1
+    sum=0
+    for i in l:
+        if i>1 and checkprime(i):
+         sum=sum+i
+    return(sum)
+
+>>> sumprimes([3,3,1,13])
+19
+>>> sumprimes([2,4,6,9,11])
+13
+>>> sumprimes([-3,1,6])
+0
